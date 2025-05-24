@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عرض تسويقي احترافي - Digital Marketing Proposal</title>
+
+    <!-- Bootstrap 5 RTL -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #1e3799;
+        --secondary-color: #0984e3;
+        --accent-color: #00b894;
+        --success-color: #00b894;
+        --warning-color: #fdcb6e;
+        --gradient-primary: linear-gradient(135deg, #192a56 0%, #273c75 100%);
+        --gradient-secondary: linear-gradient(135deg, #0984e3 0%, #00a8ff 100%);
+        --gradient-accent: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+      }
+
+      * {
+        font-family: "Cairo", sans-serif;
+      }
+
+      body {
+        background: var(--gradient-primary);
+        min-height: 100vh;
+        color: #2d3436;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glass-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .glass-card:hover::before {
+        opacity: 1;
+      }
+
+      .service-card {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .service-card .feature-icon {
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover .feature-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .feature-icon {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--gradient-accent);
+        color: white;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 10px 20px rgba(0, 184, 148, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      .feature-icon::after {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        background: var(--gradient-secondary);
+        z-index: -1;
+        opacity: 0.3;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-right: 60px;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        right: 25px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--gradient-accent);
+        border-radius: 3px;
+      }
+
+      .timeline-number {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        width: 35px;
+        height: 35px;
+        background: var(--gradient-accent);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+        border: 3px solid white;
+      }
+
+      .section-title {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 3rem;
+        padding-bottom: 1rem;
+        color: white;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient-accent);
+        border-radius: 2px;
+      }
+
+      .target-badge {
+        background: var(--gradient-accent);
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        box-shadow: 0 10px 20px rgba(0, 184, 148, 0.3);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .price-card {
+        border: 2px solid transparent;
+        background: linear-gradient(white, white) padding-box,
+          var(--gradient-accent) border-box;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        padding: 2rem;
+      }
+
+      .price-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 184, 148, 0.2);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 900;
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+        margin: 1rem 0;
+      }
+
+      .table-responsive {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .table {
+        margin-bottom: 0;
+      }
+
+      .table th {
+        background: var(--gradient-accent);
+        color: white;
+        font-weight: 600;
+        border: none;
+        padding: 1rem;
+      }
+
+      .table td {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .alert-info {
+        background: var(--gradient-secondary);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      /* Responsive Improvements */
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+        }
+
+        .timeline-item {
+          padding-right: 50px;
+        }
+      }
+
+      .video-play-button {
+        width: 80px;
+        height: 80px;
+        background: var(--gradient-accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: 0 10px 30px rgba(0, 184, 148, 0.4);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 3px solid white;
+      }
+
+      .video-play-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 15px 40px rgba(0, 184, 148, 0.6);
+      }
+
+      .feature-icon-small {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        background: var(--gradient-accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: 0 4px 10px rgba(0, 184, 148, 0.3);
+      }
+
+      .video-features .feature-item {
+        transition: all 0.3s ease;
+        padding: 1rem;
+        border-radius: 15px;
+      }
+
+      .video-features .feature-item:hover {
+        background: rgba(0, 184, 148, 0.05);
+        transform: translateX(-5px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid px-0">
+      <!-- Header Section -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="glass-card rounded-4 p-5 text-center">
+                <div class="mb-4">
+                  <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
+                  <h1 class="display-4 fw-bold text-dark mb-3">
+                    عرض تسويقي متكامل
+                  </h1>
+                  <p class="lead text-muted">
+                    حلول تسويقية احترافية لضمان نجاح كورسك وتحقيق أقصى عائد
+                    استثمار
+                  </p>
+                </div>
+                <div class="row g-3 justify-content-center">
+                  <div class="col-auto">
+                    <span class="badge bg-success fs-6 px-3 py-2">
+                      <i class="fas fa-shield-alt me-2"></i>ضمان النتائج
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center mb-5">
+              <h2 class="section-title display-5 fw-bold text-white">
+                <i class="fas fa-cogs me-3"></i>الخدمات المتضمنة
+              </h2>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+              <div class="glass-card service-card h-100 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <div class="feature-icon mb-3">
+                    <i class="fas fa-video fa-2x"></i>
+                  </div>
+                  <h4 class="fw-bold mb-3">فيديو تسويقي احترافي</h4>
+                  <p class="text-muted">
+                    إنتاج فيديو تسويقي عالي الجودة يعرض تفاصيل الكورس ويستهدف
+                    الجمهور المناسب بطريقة مقنعة
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="glass-card service-card h-100 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <div class="feature-icon mb-3">
+                    <i class="fas fa-palette fa-2x"></i>
+                  </div>
+                  <h4 class="fw-bold mb-3">تصاميم سوشيال ميديا</h4>
+                  <p class="text-muted">
+                    3 تصاميم احترافية للسوشيال ميديا تجذب الانتباه وتحفز على
+                    المشاركة والتفاعل
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="glass-card service-card h-100 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <div class="feature-icon mb-3">
+                    <i class="fas fa-desktop fa-2x"></i>
+                  </div>
+                  <h4 class="fw-bold mb-3">صفحة Landing Page</h4>
+                  <p class="text-muted">
+                    صفحة هبوط مُحسّنة للتحويل تجمع بيانات العملاء وترسلها مباشرة
+                    على الإيميل
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="glass-card service-card h-100 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <div class="feature-icon mb-3">
+                    <i class="fas fa-pen-fancy fa-2x"></i>
+                  </div>
+                  <h4 class="fw-bold mb-3">كوبي رايتنج شامل</h4>
+                  <p class="text-muted">
+                    كتابة جميع النصوص التسويقية المطلوبة بأسلوب مقنع ومحفز
+                    للشراء
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="glass-card service-card h-100 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <div class="feature-icon mb-3">
+                    <i class="fab fa-facebook fa-2x"></i>
+                  </div>
+                  <h4 class="fw-bold mb-3">تطوير صفحة الفيسبوك</h4>
+                  <p class="text-muted">
+                    تحسين وتطوير صفحة الفيسبوك من ناحية النصوص والمنشورات لتبدو
+                    احترافية
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="glass-card service-card h-100 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <div class="feature-icon mb-3">
+                    <i class="fas fa-bullhorn fa-2x"></i>
+                  </div>
+                  <h4 class="fw-bold mb-3">إدارة إعلانات الفيسبوك</h4>
+                  <p class="text-muted">
+                    إدارة احترافية لإعلانات الفيسبوك لمدة 10 أيام مع تحسين مستمر
+                    للنتائج
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Sample Section -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center mb-5">
+              <h2 class="section-title display-5 fw-bold text-white">
+                <i class="fas fa-play-circle me-3"></i>نموذج الفيديو التسويقي
+              </h2>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="glass-card rounded-4 p-5">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="position-relative">
+                      <div
+                        class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg"
+                      >
+                        <iframe
+                          src="https://www.youtube.com/embed/u6CaFsUSXIU"
+                          title="نموذج الفيديو التسويقي"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                          class="rounded-4"
+                        ></iframe>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <h4 class="fw-bold mb-4">
+                      <i class="fas fa-star text-warning me-2"></i>
+                      مميزات الفيديو التسويقي
+                    </h4>
+                    <div class="video-features">
+                      <div class="feature-item mb-3 d-flex align-items-center">
+                        <div class="feature-icon-small me-3">
+                          <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                          <h6 class="fw-bold mb-1">جودة عالية الدقة</h6>
+                          <p class="text-muted mb-0">
+                            تصوير واخراج باحترافية عالية بدقة 4K
+                          </p>
+                        </div>
+                      </div>
+                      <div class="feature-item mb-3 d-flex align-items-center">
+                        <div class="feature-icon-small me-3">
+                          <i class="fas fa-film"></i>
+                        </div>
+                        <div>
+                          <h6 class="fw-bold mb-1">مونتاج احترافي</h6>
+                          <p class="text-muted mb-0">
+                            مؤثرات بصرية وحركية جذابة
+                          </p>
+                        </div>
+                      </div>
+                      <div class="feature-item mb-3 d-flex align-items-center">
+                        <div class="feature-icon-small me-3">
+                          <i class="fas fa-music"></i>
+                        </div>
+                        <div>
+                          <h6 class="fw-bold mb-1">موسيقى تصويرية</h6>
+                          <p class="text-muted mb-0">
+                            اختيار موسيقى مناسبة للمحتوى
+                          </p>
+                        </div>
+                      </div>
+                      <div class="feature-item d-flex align-items-center">
+                        <div class="feature-icon-small me-3">
+                          <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                          <h6 class="fw-bold mb-1">مدة مثالية</h6>
+                          <p class="text-muted mb-0">
+                            فيديو مختصر وجذاب (2-3 دقائق)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline Section -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center mb-5">
+              <h2 class="section-title display-5 fw-bold text-white">
+                <i class="fas fa-clock me-3"></i>مراحل العمل
+              </h2>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="glass-card rounded-4 p-5">
+                <div class="timeline-item">
+                  <div class="timeline-number">1</div>
+                  <div class="ms-4">
+                    <h5 class="fw-bold text-primary">
+                      المرحلة الأولى: التخطيط والإعداد
+                    </h5>
+                    <p class="text-muted mb-0">
+                      دراسة المشروع، كتابة السكريبت، والتحضير للإنتاج
+                    </p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-number">2</div>
+                  <div class="ms-4">
+                    <h5 class="fw-bold text-success">
+                      المرحلة الثانية: إنتاج المحتوى
+                    </h5>
+                    <p class="text-muted mb-0">
+                      إنتاج الفيديو، تصميم السوشيال ميديا، وبناء Landing Page
+                    </p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-number">3</div>
+                  <div class="ms-4">
+                    <h5 class="fw-bold text-warning">
+                      المرحلة الثالثة: التطوير والتحسين
+                    </h5>
+                    <p class="text-muted mb-0">
+                      تطوير صفحة الفيسبوك وكتابة جميع النصوص التسويقية
+                    </p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-number">4</div>
+                  <div class="ms-4">
+                    <h5 class="fw-bold text-danger">
+                      المرحلة الرابعة: تشغيل الحملة
+                    </h5>
+                    <p class="text-muted mb-0">
+                      إطلاق وإدارة إعلانات الفيسبوك مع المتابعة المستمرة
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROI Analysis -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center mb-5">
+              <h2 class="section-title display-5 fw-bold text-white">
+                <i class="fas fa-chart-line me-3"></i>تحليل العائد على الاستثمار
+              </h2>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-12 text-center mb-4">
+              <div class="target-badge d-inline-block">
+                <i class="fas fa-bullseye me-2"></i>الهدف: 100 طالب (حسب جودة
+                العمل)
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="glass-card rounded-4 p-5 h-100">
+                <h4 class="fw-bold mb-4 text-center">
+                  <i class="fas fa-calculator text-primary me-2"></i>تفاصيل
+                  الباقة الكاملة
+                </h4>
+                <div class="price-card p-4 mb-4">
+                  <h5 class="text-center mb-3">الخدمات التسويقية</h5>
+                  <ul class="list-unstyled">
+                    <li class="mb-2">
+                      <i class="fas fa-check text-success me-2"></i>فيديو تسويقي
+                      احترافي
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-check text-success me-2"></i>تصاميم
+                      سوشيال ميديا
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-check text-success me-2"></i>صفحة هبوط
+                      احترافية
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-check text-success me-2"></i>كتابة محتوى
+                      تسويقي
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-check text-success me-2"></i>إدارة
+                      إعلانات فيسبوك
+                    </li>
+                  </ul>
+                  <div class="text-center">
+                    <div class="stat-number">25,000</div>
+                    <p class="text-muted">جنيه</p>
+                  </div>
+                </div>
+                <div class="price-card p-4">
+                  <h5 class="text-center mb-3">ميزانية الإعلانات</h5>
+                  <div class="text-center">
+                    <div class="stat-number">5,000</div>
+                    <p class="text-muted">جنيه</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="glass-card rounded-4 p-5 h-100">
+                <h4 class="fw-bold mb-4 text-center">
+                  <i class="fas fa-target text-success me-2"></i>توقعات الأرباح
+                </h4>
+                <div class="table-responsive">
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th>عدد الطلاب</th>
+                        <th class="text-end">الربح المتوقع</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>15 طالب</strong></td>
+                        <td class="text-end text-success">
+                          <strong>+15,000 ج.م</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>20 طالب</strong></td>
+                        <td class="text-end text-success">
+                          <strong>+30,000 ج.م</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>30 طالب</strong></td>
+                        <td class="text-end text-success">
+                          <strong>+60,000 ج.م</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>100 طالب</strong></td>
+                        <td class="text-end text-success">
+                          <strong>+270,000 ج.م</strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="alert alert-info text-center mt-4">
+                  <h6 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>
+                    الإجمالي المطلوب للاستثمار: 30,000 جنيه
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center mb-5">
+              <h2 class="section-title display-5 fw-bold text-white">
+                <i class="fas fa-medal me-3"></i>لماذا تختار عرضنا؟
+              </h2>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="glass-card rounded-4 p-4 text-center h-100">
+                <div class="feature-icon">
+                  <i class="fas fa-rocket fa-2x"></i>
+                </div>
+                <h5 class="fw-bold">استراتيجية متكاملة</h5>
+                <p class="text-muted mb-0">
+                  حلول شاملة من الفيديو إلى الإعلانات
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="glass-card rounded-4 p-4 text-center h-100">
+                <div class="feature-icon">
+                  <i class="fas fa-award fa-2x"></i>
+                </div>
+                <h5 class="fw-bold">خبرة مثبتة</h5>
+                <p class="text-muted mb-0">فريق محترف بنتائج مضمونة</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="glass-card rounded-4 p-4 text-center h-100">
+                <div class="feature-icon">
+                  <i class="fas fa-bolt fa-2x"></i>
+                </div>
+                <h5 class="fw-bold">تنفيذ احترافي</h5>
+                <p class="text-muted mb-0">جودة عالية في كل التفاصيل</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="glass-card rounded-4 p-4 text-center h-100">
+                <div class="feature-icon">
+                  <i class="fas fa-shield-alt fa-2x"></i>
+                </div>
+                <h5 class="fw-bold">ضمان النتائج</h5>
+                <p class="text-muted mb-0">نضمن تحقيق نقطة التعادل</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".service-card, .glass-card");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add("animate-on-scroll");
+                }, index * 100);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        cards.forEach((card) => observer.observe(card));
+      });
+    </script>
+  </body>
+</html>
